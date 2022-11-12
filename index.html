@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+</head>
+
+<body>
+    <script>
+        function printAndRun(callback) {
+            var container = document.createElement("div");
+            container.style.border = `1px solid rgb(220 50 50 / 60%)`;
+            var pre = document.createElement("pre");
+            var output = document.createElement("span");
+            pre.innerText = callback.toString();
+            output.innerText = callback();
+            container.appendChild(pre);
+            container.appendChild(output);
+            document.body.appendChild(container);
+            document.body.appendChild(document.createElement("br"));
+        }
+
+        printAndRun(() => moment().format('MMMM Do YYYY, h:mm:ss a'));
+        printAndRun(() => moment().format());
+        printAndRun(() => moment().lang("zh-hk").format('llll'));
+        printAndRun(() => moment(new Date(2013, 2, 1).getTime()).lang("zh-hk"));
+        printAndRun(() => moment(new Date(Date.UTC(2013, 2, 1)).getTime()).lang("zh-hk"));
+    </script>
+</body>
+</html>
